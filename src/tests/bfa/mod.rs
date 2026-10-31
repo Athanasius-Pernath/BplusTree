@@ -6,8 +6,8 @@ mod bfa_tests {
 
     #[test]
     fn test_bfa_put_ok() {
-        let mut file = File::create("test_files/test_bfa_put_ok").expect("test_bfa_put_ok failed");
-        file.write_all(b"Hello World!").expect("test_bfa_put_ok failed");
+        let mut file = File::create("test_files/test_bfa_put_ok").expect("test_bfa_put_ok test file creation failed");
+        file.write_all(b"Hello World!").expect("test_bfa_put_ok write failed");
         let mut bfa_1 = BFA::new(6, "test_files","test_bfa_put_ok");
         let block_1 = bfa_1.get(0).unwrap();
         let block_2 = bfa_1.get(1).unwrap();

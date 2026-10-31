@@ -121,7 +121,7 @@ impl BFA {
         if self.update_flags[id] {
             let mut buffer:Vec<u8> = vec![0; self.block_size];
             self.file.seek(SeekFrom::Start((id * self.block_size) as u64)).expect("error bfa get");
-            self.file.read(& mut buffer).expect("error bfa get");
+            self.file.read(& mut buffer).expect("error in bfa get: read file to buffer");
             let block = Block::new(buffer);
             Some(block)
         }

@@ -2,7 +2,6 @@ use std::fmt::Debug;
 use serde::de::DeserializeOwned;
 use serde::Serialize;
 use crate::b_plus_tree::BTree;
-use crate::b_plus_tree::traverse::traverse_internal;
 use crate::block::Block;
 use crate::inner_element::InnerElement;
 use crate::leaf_element::LeafElement;

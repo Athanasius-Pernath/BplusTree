@@ -10,14 +10,25 @@ mod btree_tests{
     /*
     use std::fs::remove_file;
     use std::process::{Command, Output};
-
-    #[tests]
-    pub fn test_cleanup() {
-        let dir = std::env::current_dir().expect("current dir fail");
-        dbg!(dir.to_str().unwrap().to_owned() + "/files/");
-        //let  = Command::new("sh").arg("cd").arg(dir.to_str().unwrap().to_owned()).arg("&&").arg("ls").output().unwrap(); //.arg("&&").arg("rm").arg("*btree*").output().unwrap();
-        assert_eq!(.stdout, vec![]);
-    }*/
+    */
+    
+    pub fn test_cleanup(name_list: Vec<str>) {
+        let mut env_dir = std::env::current_dir().expect("current dir fail");
+        let dir = env_dir.join("test_files");
+        let dir_again = dir.clone();
+        for entry in std::fs::read_dir(dir).expect("cant read dir") {
+            let entry_path = entry.unwrap().path();
+            if !entry_path.is_dir() {
+                for name in name_list.into().into_iter() {
+                    if entry_path.file_name().unwrap() == name {
+                        std::fs::remove_file(entry_path);
+                    }
+                }
+            }
+        }
+        let dir_content = std::fs::read_dir(dir_again).expect("cant read dir after file deletion");
+        assert_eq!(dir_content.into_iter().fil), false);
+    }
 
     //WARNING: These Tests do not work a second time, as the BFA is persistent ie. files were created and content was inserted -> inserting same elements returns an error
     //Use cleanup function to et

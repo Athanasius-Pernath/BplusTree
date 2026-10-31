@@ -187,7 +187,7 @@ impl BTree {
         let search: Option<V> = search::search_internal(self,key, self.root_id);
         match search {
             Some(_val) => {
-                println!("comp {:?} already exists", &key);
+                println!("Element with ID {:?} already exists, skipping...", &key);
                 return Err(Error);
             }
             None => {
